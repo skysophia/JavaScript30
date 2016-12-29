@@ -39,7 +39,25 @@
 
 <button></button>
 <script>
+const divs = document.querySelectorAll('div');
+const button = document.querySelector('button');
 
+function logText(e){
+  console.log(this.classList.value);
+  //e.stopPropagation(); // stop bubbling! 只選取要選取的
+  // console.log(this);
+}
+
+divs.forEach(div => div.addEventListener('click', logText, {
+  capture: false,
+  once:true // 只能run一次
+}));
+
+button.addEventListener('click', () => {
+  console.log('Click!!!!');
+},{
+  once:true // 只能run一次
+})
 </script>
 </body>
 </html>
